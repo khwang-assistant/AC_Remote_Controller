@@ -1,8 +1,8 @@
 # 外出冷氣控制系統 (AC Remote Controller)
 
-本專案為基於 **ESP32-DevKitC (`ESPHome`)**、**M5Stack U002 紅外線收發模組**、**小米藍牙溫濕度計 3** 與 **Synology NAS (`Home Assistant` + `Apple HomeKit`)** 建置之遠端冷氣控制與環境監測系統。
+本專案為基於 **ESP32-DevKitC (`ESPHome`)**、**紅外線收發模組 (M5Stack U002 訊號解碼 / 1W 940nm 大功率發射器)**、**小米藍牙溫濕度計 3** 與 **Synology NAS (`Home Assistant` + `Apple HomeKit`)** 建置之遠端冷氣控制與環境監測系統。
 
-系統整合至 iOS / macOS **「Apple 家庭 (Home)」App** 與 **Siri**，支援遠端空調模式切換、溫度調節、即時出風口溫濕度監測，以及 **「送風防霉 1 小時定時自動關機」** 功能。
+系統整合至 iOS / macOS **「Apple 家庭 (Home)」App** 與 **Siri**，支援遠端空調模式切換、溫度調節、即時出風口溫濕度監測，以及 **「送風防霉 1 小時定時自動關機」** 功能。針對實體安裝距離約 2.7m 之實場環境，發射端升級為 1W 大功率 940nm 模組，確保紅外線指令穩定穿透。
 
 ---
 
@@ -11,7 +11,7 @@
 ```text
 AC_Remote_Controller/
 ├── README.md                        # 專案總覽與文件索引
-├── .clinerules                      # 專案文件與開發維護規範
+├── AGENTS.md                        # 專案任務追蹤規範與開發維護手則
 ├── .gitignore                       # Git 忽略清單 (排除私密金鑰與編譯快取)
 │
 ├── firmware/                        # ESP32 韌體設定目錄 (ESPHome)
@@ -37,9 +37,9 @@ AC_Remote_Controller/
 若需從零開始建置本系統，建議依下列順序閱讀相關文件：
 
 1. **[系統建置與部署手冊 (`./docs/step_by_step_guide.md`)](./docs/step_by_step_guide.md)**
-   * 涵蓋硬體材料清單、macOS 安裝 ESPHome、產生通訊金鑰、初次 USB 燒錄與後續 Wi-Fi OTA 更新、M5Stack U002 腳位接線與注意事項、`remote_receiver` 擷取與解碼日立 344-bit 紅外線協定、提取小米溫濕度計 3 `Bindkey`，以及 Apple HomeKit 整合步驟。
+   * 涵蓋硬體材料清單、macOS 安裝 ESPHome、產生通訊金鑰、初次 USB 燒錄與後續 Wi-Fi OTA 更新、M5Stack U002 與 1W 大功率模組腳位接線與長距離注意事項、`remote_receiver` 擷取與解碼日立 344-bit 紅外線協定、提取小米溫濕度計 3 `Bindkey`，以及 Apple HomeKit 整合步驟。
 2. **[系統設計規格書 (`./docs/system_spec.md`)](./docs/system_spec.md)**
-   * 定義系統架構圖、ESP32-DevKitC 與 M5Stack U002 腳位對應關係、ESPHome 韌體規格、Home Assistant 實體對應與測試驗證計畫。
+   * 定義系統架構圖、ESP32-DevKitC 與紅外線發射/接收模組腳位對應關係、ESPHome 韌體規格、Home Assistant 實體對應與測試驗證計畫。
 3. **[macOS ESPHome 開發環境指南 (`./docs/esphome_setup_guide.md`)](./docs/esphome_setup_guide.md)**
    * 說明於 macOS 安裝 `esphome`、檢查 USB 序列埠 (`/dev/cu.*`) 及常用維護指令（`compile`、`upload`、`logs`）。
 4. **[Synology NAS Home Assistant 部署指南 (`./docs/synology_ha_setup_guide.md`)](./docs/synology_ha_setup_guide.md)**

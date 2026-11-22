@@ -57,7 +57,8 @@ remote_receiver:
   filter_symbols: 100
   receive_symbols: 1024
 
-# M5Stack U002 紅外線發射器 (連接至 GPIO19)
+# 紅外線發射器 (連接至 GPIO19)
+# 支援 M5Stack U002 或 1W 940nm 大功率發射模組（長距離 >2m / 實測 2.7m 建議使用 1W 大功率模組）
 remote_transmitter:
   pin: GPIO19
   carrier_duty_percent: 50%
